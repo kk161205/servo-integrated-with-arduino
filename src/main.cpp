@@ -1,10 +1,23 @@
 #include <Arduino.h>
-int servoPin = 3;
+#include <Servo.h>
+Servo myServo;
+
+#define servoPin 6
 
 void setup() {
-// write your initialization code here
+    myServo.attach(servoPin);
+    Serial.begin(9600);
 }
 
 void loop() {
-// write your code here
+    for (int i=0;i<=180;i++)
+    {
+        myServo.write(i);
+        delay(15);
+    }
+    for (int i=180;i>=0;i--)
+    {
+        myServo.write(i);
+        delay(15);
+    }
 }
